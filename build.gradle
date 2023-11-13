@@ -32,6 +32,18 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	implementation 'org.mapstruct:mapstruct:1.5.4.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.4.Final'
+	implementation 'org.bitbucket.b_c:jose4j:0.9.3'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
+}
+
+compileJava {
+	options.compilerArgs += [
+			'-Amapstruct.suppressGeneratorTimestamp=true',
+			'-Amapstruct.suppressGeneratorVersionInfoComment=true',
+			'-Amapstruct.defaultComponentModel=spring'
+	]
 }
 
 tasks.named('bootBuildImage') {
